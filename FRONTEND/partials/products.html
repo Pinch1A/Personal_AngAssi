@@ -1,0 +1,38 @@
+<!-- LISTS -->
+
+<h4 class="blog-post-title">Luca Mastrorilli Skill Test
+<button type="button" class="btn btn-lg btn-warning fa fa-plus pull-right" ng-click="open(product);">&nbsp;Add New Asset</button>
+</h4>
+<hr/>
+
+<div class="table-responsive">
+<div class="panel panel-primary">
+  <div class="panel-heading">List of assets</div>
+  <div class="panel-body">
+    <table class="table table-striped">
+    <tr ng-show="products.length==0"><td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;No data found</td></tr>
+    <tr ng-hide="products.length>-1"><td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</td></tr>
+    
+    <tr>
+        <th ng-repeat="c in columns">{{c.text}}</th>
+        <th style="width:110px">Edit / Remove</th>
+    </tr>
+
+    <tr ng-repeat="c in products | orderBy:'id'" id="{{c.id}}" animate-on-change='c.description + c.creation + c.updated' ng-animate=" 'animate'">
+        <td>*</td>
+        <td>{{c.name}}</td>
+        <td>{{c.description}}</td>
+        <td>{{c.creation}}</td>
+        <td>{{c.updated}}</td>
+        <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default fa fa-edit" ng-click="open(c);"></button>
+              <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deleteProduct(c);"></button>
+            </div>
+        </td>
+    </tr>
+    </table>
+</div>
+</div>
+</div>
+              

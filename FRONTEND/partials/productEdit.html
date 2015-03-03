@@ -1,0 +1,46 @@
+<!-- MODAL PAGE TO CREATE or EDIT ASSET -->    
+
+    <button type="button" class="close" ng-click="cancel();">
+        <i class="fa fa-times-circle-o" style="margin:10px;color:blue;"></i>
+    </button>
+    <div class="modal-header">
+        <h3 class="modal-title">Edit product [ {{product.name }} ]</h3>
+    </div>
+    <div class="modal-body">
+        <form name="product_form" class="form-horizontal" role="form" novalidate>
+            <form-element label="NAME" mod="product">
+                <input type="text" class="form-control" name="name" placeholder="NAME" ng-model="product.name" focus/>
+            </form-element>
+            
+            <form-element label="DESCRIPTION" mod="product">
+            <textarea class="form-control" name="description" placeholder="DESCRIPTION" ng-model="product.description">
+                {{product.description}}
+            </textarea>
+            </form-element>
+
+            <form-element label="DATE CREATED" mod="product">
+                <input type="date" class="form-control" name="created" placeholder="CREATION DATE" ng-model="product.creation" ng-disabled="product.id" focus/>
+            </form-element>
+            
+            <form-element label="DATE UPDATED" mod="product">
+                <input id ="" type="date" class="form-control" name="updated" placeholder="UPDATE DATE" 
+                ng-model="product.updated" ng-disabled="!product.id" focus/>
+            </form-element>
+            <div class="space"></div>
+            <div class="space-4"></div>
+            <div class="modal-footer">
+                <form-element label="">
+                    <div class="text-right">
+                        <a class="btn btn-sm" ng-click="cancel()"><i class="ace-icon fa fa-reply"></i>Cancel</a>
+                        <button ng-click="saveProduct(product);"
+                                ng-disabled="product_form.$invalid || enableUpdate"
+                                class="btn btn-sm btn-primary"
+                                type="submit">
+                            <i class="ace-icon fa fa-check"></i>{{buttonText}}
+                        </button>
+                    </div>
+                </form-element>
+            </div>
+        </form>
+    </div>
+
